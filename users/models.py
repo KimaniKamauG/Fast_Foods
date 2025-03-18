@@ -8,7 +8,7 @@ class UserManager(BaseUserManager):
             raise ValueError('Users must have an email address!')
         if not password:
             raise ValueError('A password is required for all users!')
-        user = self.model(email=self.normalise_email(email), username=username)
+        user = self.model(email=self.normalize_email(email), username=username)
         user.set_password(password)
         user.save(using=self._db)
         return user 
