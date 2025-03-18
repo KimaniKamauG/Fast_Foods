@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'users',
     'orders',
     'deliveries',
+    'restaurant',
 
     'rest_framework',
 ]
