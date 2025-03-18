@@ -4,7 +4,7 @@ from restaurant.models import MenuItem
 from orders.models import Order 
 from .serializers import MenuItemSerializer, OrderSerializer 
 
-class MenuItemViewSet(viewsets.ModelsViewSet):
+class MenuItemViewSet(viewsets.ModelViewSet):
     queryset = MenuItem.objects.all()
     serializer_class = MenuItemSerializer 
     
