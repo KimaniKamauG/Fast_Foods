@@ -2,7 +2,10 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated 
 from restaurant.models import MenuItem
 from orders.models import Order 
-from .serializers import MenuItemSerializer, OrderSerializer 
+from .serializers import MenuItemSerializer, OrderSerializer, UserSerializer
+from django.contrib.auth import get_user_model 
+
+User = get_user_model()
 
 class MenuItemViewSet(viewsets.ModelViewSet):
     queryset = MenuItem.objects.all()
@@ -16,6 +19,10 @@ class OrderViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer 
+    permission_class = [IsAuthenticated]
 
 
 
